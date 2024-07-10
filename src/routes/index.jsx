@@ -6,18 +6,18 @@ import Url from '@pages/Url';
 
 const routes = [
   {
-    path: '/home',
-    name: 'Home',
-    protected: false,
-    component: Home,
-    layout: MainLayout,
-  },
-  {
     path: '/',
     name: 'Url',
     protected: false,
     component: Url,
     // layout: MainLayout,
+  },
+  {
+    path: '/home',
+    name: 'Home',
+    protected: false,
+    component: Home,
+    layout: MainLayout,
   },
 
   { path: '*', name: 'Not Found', component: NotFound, layout: MainLayout, protected: false },
