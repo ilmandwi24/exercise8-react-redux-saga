@@ -1,6 +1,7 @@
 import { Button, styled } from '@mui/material';
+import PropTypes from 'prop-types';
 
-const ButtonPrimary = () => {
+const ButtonPrimary = ({ value }) => {
   const ColorButton = styled(Button)(() => ({
     color: 'white',
     fontSize: '17px',
@@ -15,7 +16,10 @@ const ButtonPrimary = () => {
     // width: 200,
     // height: 65,
   }));
-  return <ColorButton>Get Started</ColorButton>;
+  return <ColorButton>{value}</ColorButton>;
 };
 
+ButtonPrimary.propTypes = {
+  value: PropTypes.string,
+};
 export default ButtonPrimary;

@@ -3,13 +3,16 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import PinterestIcon from '@mui/icons-material/Pinterest';
 import InstagramIcon from '@mui/icons-material/Instagram';
+import { FormattedMessage } from 'react-intl';
 import classesComponent from './url.module.scss';
 
 const Footer = () => (
   <Box className={classesComponent.footer}>
     <h1>Shortly</h1>
     <Box>
-      <h3>Features</h3>
+      <h3>
+        <FormattedMessage id="app_header_menu_features" />
+      </h3>
       <ul>
         <li>Link shortening</li>
         <li>Branded links</li>
@@ -17,20 +20,38 @@ const Footer = () => (
       </ul>
     </Box>
     <Box>
-      <h3>Resources</h3>
+      <h3>
+        <FormattedMessage id="app_header_menu_resources" />
+      </h3>
       <ul>
-        <li>Blog</li>
-        <li>Developers</li>
-        <li>Support</li>
+        <li>
+          <FormattedMessage id="app_resources_blog" />
+        </li>
+        <li>
+          <FormattedMessage id="app_resource_developers" />
+        </li>
+        <li>
+          <FormattedMessage id="app_resource_support" />
+        </li>
       </ul>
     </Box>
     <Box>
-      <h3>Company</h3>
+      <h3>
+        <FormattedMessage id="app_company" />
+      </h3>
       <ul>
-        <li> About</li>
-        <li>Our Team</li>
-        <li>Careers</li>
-        <li>Contact</li>
+        <li>
+          <FormattedMessage id="app_company_about" />
+        </li>
+        <li>
+          <FormattedMessage id="app_company_ourteam" />
+        </li>
+        <li>
+          <FormattedMessage id="app_company_careers" />
+        </li>
+        <li>
+          <FormattedMessage id="app_company_contact" />
+        </li>
       </ul>
     </Box>
     {/* ICON */}

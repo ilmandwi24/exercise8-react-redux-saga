@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { selectShortLinks } from '@containers/App/selectors';
 import { useEffect, useState } from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { FormattedMessage } from 'react-intl';
 import classComponent from './url.module.scss';
 
 const LinkList = ({ shortLinks }) => {
@@ -61,34 +62,20 @@ const LinkList = ({ shortLinks }) => {
                 <Box>{link.url}</Box>
                 <Box>{link.shrtlnk}</Box>
                 <CopyToClipboard text={link.shrtlnk} onCopy={() => handleCopy(link.url)}>
-                  {link.copied ? <CopiedButton>Copied!</CopiedButton> : <CustomButton>Copy</CustomButton>}
+                  {link.copied ? (
+                    <CopiedButton>
+                      <FormattedMessage id="app_copied" />!
+                    </CopiedButton>
+                  ) : (
+                    <CustomButton>
+                      <FormattedMessage id="app_copy" />
+                    </CustomButton>
+                  )}
                 </CopyToClipboard>
                 {/* <CustomButton>Copy</CustomButton> */}
               </Box>
             </Grid>
           ))}
-
-        {/* <Grid item xs={12}>
-          <Box className={classComponent.linkCard}>
-            <Box>https://frontendmentor.io/</Box>
-            <Box>https://frontendmentor.io/</Box>
-            <CustomButton>Copy</CustomButton>
-          </Box>
-        </Grid>
-        <Grid item xs={12}>
-          <Box className={classComponent.linkCard}>
-            <Box>https://frontendmentor.io/</Box>
-            <Box>https://frontendmentor.io/</Box>
-            <CustomButton className={classComponent.copied}>Copied!</CustomButton>
-          </Box>
-        </Grid>
-        <Grid item xs={12}>
-          <Box className={classComponent.linkCard}>
-            <Box>https://frontendmentor.io/</Box>
-            <Box>https://frontendmentor.io/</Box>
-            <CustomButton>Copy</CustomButton>
-          </Box>
-        </Grid> */}
       </Grid>
     </Box>
   );

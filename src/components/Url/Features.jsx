@@ -2,6 +2,7 @@ import { Box } from '@mui/material';
 import icon1 from '@static/images/icon-brand-recognition.svg';
 import icon2 from '@static/images/icon-detailed-records.svg';
 import icon3 from '@static/images/icon-fully-customizable.svg';
+import { FormattedMessage } from 'react-intl';
 import componentClasses from './url.module.scss';
 
 const Features = () => (
@@ -14,11 +15,13 @@ const Features = () => (
           <img src={icon1} alt="icon" />
         </Box>
         <Box>
-          <h2 className={componentClasses.title}>Brand Recognition</h2>
+          <h2 className={componentClasses.title}>
+            <FormattedMessage id="app_brand_recognition" />
+          </h2>
         </Box>
         <Box>
           <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste, rem tenetur saepe quos dolorem molestiae!
+            <FormattedMessage id="app_brand_recognition_p" />
           </p>
         </Box>
       </Box>
@@ -27,11 +30,13 @@ const Features = () => (
           <img src={icon2} alt="icon" />
         </Box>
         <Box>
-          <h2 className={componentClasses.title}>Detailed Records</h2>
+          <h2 className={componentClasses.title}>
+            <FormattedMessage id="app_detail_records" />
+          </h2>
         </Box>
         <Box>
           <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste, rem tenetur saepe quos dolorem molestiae!
+            <FormattedMessage id="app_detail_records_p" />
           </p>
         </Box>
       </Box>
@@ -40,11 +45,13 @@ const Features = () => (
           <img src={icon3} alt="icon" />
         </Box>
         <Box>
-          <h2 className={componentClasses.title}>Fully Customizable</h2>
+          <h2 className={componentClasses.title}>
+            <FormattedMessage id="app_fully_customizable" />
+          </h2>
         </Box>
         <Box>
           <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste, rem tenetur saepe quos dolorem molestiae!
+            <FormattedMessage id="app_fully_customizable_p" />
           </p>
         </Box>
       </Box>

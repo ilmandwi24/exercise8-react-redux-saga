@@ -18,7 +18,6 @@ function* doGetData() {
 }
 
 function* doGetCountryList(action) {
-  // console.log(action.data);
   yield put(setLoading(true));
 
   try {
@@ -36,13 +35,14 @@ function* doGetShortLink(action) {
   yield put(setLoading(true));
   try {
     const response = yield call(getShortLink, action.url);
-    console.log('response: \n', response);
+
+    console.log('response: \n', response.status);
     if (response) {
       yield put(setShortLink(response));
     }
   } catch (error) {
     console.log(error);
-    yield put(showPopup());
+    yield put(showPopup('Error', error.response.data.message));
   }
   yield put(setLoading(false));
 }

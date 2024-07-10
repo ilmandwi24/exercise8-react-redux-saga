@@ -1,10 +1,15 @@
 import { Box } from '@mui/material';
+import { FormattedMessage } from 'react-intl';
 import classes from './url.module.scss';
 
 const Advanced = () => (
   <Box sx={{ textAlign: 'center', marginTop: 10 }} className={classes.advanced}>
-    <h2>Advanced Statitics</h2>
-    <p>Track how your link are performing across the web without our advanced statistics dashboard</p>
+    <h2>
+      <FormattedMessage id="app_advanced" />
+    </h2>
+    <p>
+      <FormattedMessage id="app_track" />
+    </p>
   </Box>
 );
 

@@ -42,6 +42,6 @@ export const callAPI = async (endpoint, method, header = {}, params = {}, data =
 export const getData = () => callAPI(urls.json, 'get');
 
 // export const getCountryList = () => callAPI(urls.countryGetAllKist, 'get', {}, {});
-export const getCountryList = (url) => console.log('data', url);
+export const getCountryList = () => callAPI(urls.countryGetAllKist, 'get', {}, {});
 export const getShortLink = (url) => callAPI(urls.shortLink, 'post', headerShortLink, {}, { url });
 // export const getShortLink = (url) => callAPI(urls.shortLink, 'post', headerShortLink, {}, { url });

@@ -12,7 +12,7 @@ $imgboostDesktop: url('../../static/images/bg-boost-desktop.svg');
         display: none;
     }
     .menuMobile {
-        display: none;
+        display: block;
         // background-color: blue;
     }
     .iconMobile{
@@ -23,6 +23,7 @@ $imgboostDesktop: url('../../static/images/bg-boost-desktop.svg');
 .hero {
     display: flex;
     flex-wrap: wrap;
+    padding-bottom: 1rem;
     // padding: 0 !important;
    
     .illustration {
@@ -43,14 +44,18 @@ $imgboostDesktop: url('../../static/images/bg-boost-desktop.svg');
             color:$color-neutral-dark-blue;
             line-height: 1;
             text-align: center;
-            margin-top: 1.4rem;
+            margin-top: 1.5rem;
             // padding:0;
+            margin-bottom: 0;
             
         }
         p{
             text-align: center;
             font-weight: 500;
             color: $color-neutral-gray;
+            
+            // margin-top:0px;
+            margin-bottom: 25px;
         }
         button {
             text-align: left;
@@ -309,6 +314,7 @@ $imgboostDesktop: url('../../static/images/bg-boost-desktop.svg');
         flex-wrap: wrap;
         align-items: center;
         width: 100%;
+        padding-bottom: 0.5rem;
         // padding: 0 !important;
         
         .illustration {
@@ -329,13 +335,16 @@ $imgboostDesktop: url('../../static/images/bg-boost-desktop.svg');
             h1{
                 font-size: 4rem;
                 color:$color-neutral-dark-blue;
-                line-height: 1;
+                line-height: 1.2;
                 text-align: left;
                 margin: 0;
                 
             }
             p{
+                width: 80%;
                 text-align: left;
+                margin-top:5px;
+                margin-bottom: 25px;
             }
             button {
                 text-align: left;
@@ -344,7 +353,7 @@ $imgboostDesktop: url('../../static/images/bg-boost-desktop.svg');
     }
 
     .shorten {
-        margin-top: -50px;
+        margin-top: -60px;
         // position: absolute;
         display: flex;
         flex-grow: 1;
@@ -486,8 +495,9 @@ $imgboostDesktop: url('../../static/images/bg-boost-desktop.svg');
         display: flex;
         gap:2rem;
         .features {
+            flex-basis: 33%;
             z-index: 9999;
-            height: 15rem;
+            height: 17rem;
             display: flex;
             flex-direction: column;
             justify-content: center;

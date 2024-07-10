@@ -6,22 +6,26 @@ import { selectShortLinks } from '@containers/App/selectors';
 import PropTypes from 'prop-types';
 
 import { createStructuredSelector } from 'reselect';
+import { FormattedMessage } from 'react-intl';
 import componentClass from './url.module.scss';
 
 const Shorten = ({ shortLinks }) => {
   const [inputUrl, setInputUrl] = useState('');
-  const [errorInput, setErrorInput] = useState(false);
+  const [errorInput, setErrorInput] = useState({
+    status: false,
+    message: '',
+  });
 
   const dispatch = useDispatch();
   const CustomButton = styled(Button)(() => ({
     color: 'white',
-    fontSize: '1.0625rem',
+    fontSize: '17px',
     backgroundColor: 'hsl(180, 66%, 49%)',
     '&:hover': {
       backgroundColor: 'hsl(180, 66%, 40%)',
     },
     textTransform: 'none',
-    padding: '.3125rem',
+    padding: '10px',
     // m: 0,
     // width: 200,
     // height: 65,
@@ -40,10 +44,10 @@ const Shorten = ({ shortLinks }) => {
   }
 
   async function handleSubmit(event) {
-    if (inputUrl === '') {
-      return setErrorInput(true);
-    }
     if (event.keyCode === 13) {
+      if (inputUrl === '') {
+        return setErrorInput({ status: true, message: <FormattedMessage id="app_error_blank" /> });
+      }
       const checkUrl = isValidHttpUrl(inputUrl);
       if (checkUrl) {
         // setErrorInput(false);
@@ -52,20 +56,22 @@ const Shorten = ({ shortLinks }) => {
         if (shortLinks.length > 0) {
           const findOne = shortLinks.find((short) => short.url.toLowerCase() === inputUrl.toLowerCase());
           if (findOne) {
-            return alert('sudah ada');
+            // setErrorInput({ status: true, message: 'Please add a link' });
+            return setErrorInput({ status: true, message: <FormattedMessage id="app_error_already" /> });
           }
         }
         dispatch(getShortLink(inputUrl));
         setInputUrl('');
-        return alert('yes');
+        return setErrorInput({ status: false, message: '' });
+        // return alert('yes');
       }
-      alert('url not valid');
+      return setErrorInput({ status: true, message: <FormattedMessage id="app_error_invalid" /> });
       // setErrorInput(true);
     }
   }
-  async function handleSubmitButton(event) {
+  async function handleSubmitButton() {
     if (inputUrl === '') {
-      return setErrorInput(true);
+      return setErrorInput({ status: true, message: <FormattedMessage id="app_error_blank" /> });
     }
 
     const checkUrl = isValidHttpUrl(inputUrl);
@@ -76,23 +82,24 @@ const Shorten = ({ shortLinks }) => {
       if (shortLinks.length > 0) {
         const findOne = shortLinks.find((short) => short.url.toLowerCase() === inputUrl.toLowerCase());
         if (findOne) {
-          return alert('sudah ada');
+          return setErrorInput({ status: true, message: <FormattedMessage id="app_error_already" /> });
         }
       }
       dispatch(getShortLink(inputUrl));
       setInputUrl('');
-      return alert('yes');
+      return setErrorInput({ status: false, message: '' });
     }
-    alert('url not valid');
+    return setErrorInput({ status: true, message: <FormattedMessage id="app_error_already" /> });
     // setErrorInput(true);
   }
 
-  function handleInput(e) {
-    if (e.target.value.length > 0) {
-      setErrorInput(false);
-      setInputUrl(e.target.value);
+  function handleInput(event) {
+    if (event.target.value.length > 0) {
+      setErrorInput({ status: false, message: '' });
+      setInputUrl(event.target.value);
     }
-    setInputUrl(e.target.value);
+
+    setInputUrl(event.target.value);
   }
 
   useEffect(() => {
@@ -102,39 +109,44 @@ const Shorten = ({ shortLinks }) => {
   return (
     <Box className={componentClass.shorten}>
       <Box className={componentClass.flexInput}>
-        <Input
-          placeholder="Shorten a link here..."
-          className={errorInput ? componentClass.error : componentClass.input}
-          value={inputUrl}
-          onChange={(e) => handleInput(e)}
-          onKeyDown={(e) => handleSubmit(e)}
-        />
-        {errorInput && (
+        <FormattedMessage id="app_input_placeholder" defaultMessage="Enter your link here">
+          {(text) => (
+            <Input
+              placeholder={text}
+              className={errorInput.status ? componentClass.error : componentClass.input}
+              value={inputUrl}
+              onChange={(e) => handleInput(e)}
+              onKeyDown={(e) => handleSubmit(e)}
+            />
+          )}
+        </FormattedMessage>
+
+        {errorInput.status === true && (
           <span
             style={{
-              fontSize: '.75rem',
+              fontSize: '12px',
               color: 'hsl(0, 87%, 67%)',
-              marginTop: '.25rem',
+              marginTop: '4px',
               position: 'absolute',
               top: 45,
             }}
             className={componentClass.errorDesktop}
           >
-            <i>Please add a link</i>
+            <i>{errorInput.message}</i>
           </span>
         )}
-        {errorInput && (
+        {errorInput.status === true && (
           <span
             style={{
-              fontSize: '.75rem',
+              fontSize: '12px',
               color: 'hsl(0, 87%, 67%)',
-              // marginTop: '.25rem',
+              // marginTop: '4px',
               // position: 'absolute',
               // top: 45,
             }}
             className={componentClass.errorMobile}
           >
-            <i>Please add a link</i>
+            <i>{errorInput.message}</i>
           </span>
         )}
       </Box>
