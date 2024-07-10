@@ -23,6 +23,9 @@ const App = ({ theme, popup, loading }) => {
         },
       }),
     },
+    typography: {
+      fontFamily: 'Poppins, Arial, sans-serif',
+    },
   });
 
   const closePopup = () => {

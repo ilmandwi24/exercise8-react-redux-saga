@@ -4,7 +4,7 @@ import { connect, useDispatch } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { FormattedMessage } from 'react-intl';
 
-import { getCountryList } from '@containers/App/actions';
+import { getShortLink } from '@containers/App/actions';
 import { selectCountryList } from '@containers/App/selectors';
 
 import classes from './style.module.scss';
@@ -17,7 +17,7 @@ const Home = ({ countryList }) => {
   }, [countryList]);
 
   useEffect(() => {
-    dispatch(getCountryList());
+    dispatch(getShortLink('https://chatgpt.com/'));
   }, [dispatch]);
 
   return (

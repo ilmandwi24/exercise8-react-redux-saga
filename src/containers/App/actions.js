@@ -7,6 +7,8 @@ import {
   GET_DATA,
   GET_COUNTRY_LIST,
   SET_COUNTRY_LIST,
+  GET_SHORTLINK,
+  SET_SHORTLINK,
 } from '@containers/App/constants';
 
 export const setLocale = (locale) => ({
@@ -50,11 +52,21 @@ export const getData = () => ({
   type: GET_DATA,
 });
 
-export const getCountryList = () => ({
+export const getCountryList = (url) => ({
   type: GET_COUNTRY_LIST,
+  url,
 });
 
 export const setCountryList = (countryList) => ({
   type: SET_COUNTRY_LIST,
   countryList,
+});
+
+export const getShortLink = (url) => ({
+  type: GET_SHORTLINK,
+  url,
+});
+export const setShortLink = (shortLink) => ({
+  type: SET_SHORTLINK,
+  shortLink,
 });

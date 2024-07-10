@@ -9,3 +9,4 @@ export const selectPopup = createSelector(selectAppState, (state) => state.popup
 export const selectLoading = createSelector(selectAppState, (state) => state.loading);
 export const selectData = createSelector(selectAppState, (state) => state.data);
 export const selectCountryList = createSelector(selectAppState, (state) => state.countryList);
+export const selectShortLinks = createSelector(selectAppState, (state) => state.shortLinks);

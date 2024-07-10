@@ -1,0 +1,14 @@
+.container {
+    overflow: hidden;
+}
+.container > div {
+    padding-left: 1.75rem;
+    padding-right: 1.75rem;
+}
+
+@include apply-at-xl-size {
+    .container > div {
+        padding-left: 5rem;
+        padding-right: 5rem;
+    }
+}

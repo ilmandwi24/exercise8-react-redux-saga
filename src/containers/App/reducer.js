@@ -1,6 +1,14 @@
 import { produce } from 'immer';
 
-import { SET_LOCAL, SET_THEME, SET_POPUP, SET_LOADING, SET_DATA, SET_COUNTRY_LIST } from '@containers/App/constants';
+import {
+  SET_LOCAL,
+  SET_THEME,
+  SET_POPUP,
+  SET_LOADING,
+  SET_DATA,
+  SET_COUNTRY_LIST,
+  SET_SHORTLINK,
+} from '@containers/App/constants';
 
 export const initialState = {
   locale: 'en',
@@ -13,6 +21,7 @@ export const initialState = {
   data: [],
   loading: false,
   countryList: [],
+  shortLinks: [],
 };
 
 export const storedKey = ['locale', 'theme'];
@@ -37,6 +46,9 @@ const appReducer = (state = initialState, action) =>
         break;
       case SET_COUNTRY_LIST:
         draft.countryList = action.countryList;
+        break;
+      case SET_SHORTLINK:
+        draft.shortLinks = [...draft.shortLinks, { ...action.shortLink, date: Date.parse(new Date()), copied: false }];
         break;
     }
   });
