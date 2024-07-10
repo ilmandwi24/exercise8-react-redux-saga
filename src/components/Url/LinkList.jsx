@@ -57,21 +57,23 @@ const LinkList = ({ shortLinks }) => {
       <Grid container spacing={3}>
         {dataSort.length > 0 &&
           dataSort.map((link) => (
-            <Grid item xs={12}>
-              <Box className={classComponent.linkCard} key={classComponent.date}>
+            <Grid item xs={12} key={classComponent.date}>
+              <Box className={classComponent.linkCard}>
                 <Box>{link.url}</Box>
-                <Box>{link.shrtlnk}</Box>
-                <CopyToClipboard text={link.shrtlnk} onCopy={() => handleCopy(link.url)}>
-                  {link.copied ? (
-                    <CopiedButton>
-                      <FormattedMessage id="app_copied" />!
-                    </CopiedButton>
-                  ) : (
-                    <CustomButton>
-                      <FormattedMessage id="app_copy" />
-                    </CustomButton>
-                  )}
-                </CopyToClipboard>
+                <Box>
+                  <Box>{link.shrtlnk}</Box>
+                  <CopyToClipboard text={link.shrtlnk} onCopy={() => handleCopy(link.url)}>
+                    {link.copied ? (
+                      <CopiedButton>
+                        <FormattedMessage id="app_copied" />!
+                      </CopiedButton>
+                    ) : (
+                      <CustomButton>
+                        <FormattedMessage id="app_copy" />
+                      </CustomButton>
+                    )}
+                  </CopyToClipboard>
+                </Box>
                 {/* <CustomButton>Copy</CustomButton> */}
               </Box>
             </Grid>

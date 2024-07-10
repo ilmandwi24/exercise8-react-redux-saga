@@ -79,6 +79,7 @@ const Shorten = ({ shortLinks }) => {
       // setErrorInput(false);
       // await navigator.clipboard.writeText('aa');
       // const findOne = dispatch(getShortLink(inputUrl));
+      console.log(shortLinks.length);
       if (shortLinks.length > 0) {
         const findOne = shortLinks.find((short) => short.url.toLowerCase() === inputUrl.toLowerCase());
         if (findOne) {
@@ -89,7 +90,7 @@ const Shorten = ({ shortLinks }) => {
       setInputUrl('');
       return setErrorInput({ status: false, message: '' });
     }
-    return setErrorInput({ status: true, message: <FormattedMessage id="app_error_already" /> });
+    return setErrorInput({ status: true, message: <FormattedMessage id="app_error_invalid" /> });
     // setErrorInput(true);
   }
 

@@ -8,6 +8,7 @@ function* doGetData() {
   yield put(setLoading(true));
   try {
     const response = yield call(getData);
+
     if (response) {
       yield put(setData(response.data));
     }

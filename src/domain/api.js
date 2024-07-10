@@ -1,6 +1,7 @@
 import { merge } from 'lodash';
 
 import request from '@utils/request';
+import development from '@config/development';
 
 const urls = {
   json: 'http://localhost:3000/api/data.json',
@@ -9,7 +10,7 @@ const urls = {
 };
 
 const headerShortLink = {
-  'api-key': 'qR40LJumS7DX2ElzWSbrvSFD9xanSXyPmKCmmE9prq95P',
+  'api-key': development.API_KEY,
   Accept: 'application/json',
   'Content-Type': 'application/json',
 };
